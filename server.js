@@ -49,6 +49,13 @@ app.get("/about",(req,res)=>{
     });
 });
 
+app.get("/me",(req,res)=>{
+    res.render("portfolio.hbs",{
+        pagetitle:'Portfolio page templated',
+        
+    });
+});
+
 app.get('/bad',(req,res)=>{
     res.send({
         error:'unable to fulfill request'
