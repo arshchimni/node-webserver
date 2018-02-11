@@ -3,6 +3,8 @@ const hbs = require('hbs');
 
 let app=express();
 
+const port= process.env.PORT || 3000;
+
 //register the template partials
 hbs.registerPartials(`${__dirname}/views/partials`);
 
@@ -25,9 +27,9 @@ app.use((req,res,next)=>{
     next(); //called to move the execution futher from middleware to the routes
 });
 
-app.use((req,res,next)=>{
-    res.render('maintainence.hbs');
-})
+// app.use((req,res,next)=>{
+//     res.render('maintainence.hbs');
+// })
 
 //to serve static content from a directory
 app.use(express.static(__dirname+"/public"))
@@ -53,7 +55,7 @@ app.get('/bad',(req,res)=>{
     })
 })
 
-app.listen(4000,(err)=>{
+app.listen(port,(err)=>{
     if(err)console.log(err);
-    console.log("Server up and running on port 4000")
+    console.log(`Server up and running on port ${port}`)
 });
